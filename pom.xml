@@ -11,7 +11,7 @@
 	<groupId>com.br.demo.project</groupId>
 	<artifactId>one-piece-pages</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>one-piece-pages</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
