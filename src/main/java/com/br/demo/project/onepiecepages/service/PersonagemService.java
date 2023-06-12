@@ -19,9 +19,9 @@ public class PersonagemService {
 		this.repository = repository;
 	}
 
-	public void save(String nome, String urlGif, String poder, String descricao) {
+	public void save(String nome, String urlGif, String poder, String descricao, String cor) {
 		
-		Personagem personagem = new Personagem(nome, urlGif, poder, descricao);
+		Personagem personagem = new Personagem(nome, urlGif, poder, descricao, cor);
 		
 		repository.save(personagem);
 		
@@ -30,6 +30,10 @@ public class PersonagemService {
 	public ArrayList<Personagem> getAll() {
 		return (ArrayList<Personagem>) repository.findAll();
 		
+	}
+	
+	public void delete(Long id) {
+		repository.deleteById(id);
 	}
 	
 }

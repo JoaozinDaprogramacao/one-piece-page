@@ -1,46 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="shortcut icon" href="simgs/icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/scrollbar.css">
-    <link rel="stylesheet" href="../css/reset.css">
-    <title>One Piece</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="shortcut icon" href="simgs/icon.png" type="image/x-icon">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/scrollbar.css">
+<link rel="stylesheet" href="../css/reset.css">
+<title>One Piece</title>
 </head>
 <body class="fundo-claro" id="body">
-    <header>
-        <img src="../imgs/icon.png" alt="icone de shuriken" class="icone">
-        <div class="switch-container">
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
-    </header>
-    <main>
-        <div class="container">
-            <ul class="biju-cards">
-                <li class="card" th:each="personagem : ${personagens}">
-                    <div class="title-card-container">
-                        <div class="title-card">
-                            <span class="nome" th:text="${personagem.nome}">nome do personagem</span>
-                          	<span class="numeracao" th:text="'#' + ${personagem.id}">#000</span>
-                        </div>
-                    </div>
-                    <img th:src="${personagem.urlGif}" src="src/gifs/luffy.gif" alt="kurama" class="gif">
-                    <div th:class="'habilidade-atual' + ' ' + ${personagem.corHabilidade}">
-                        <p th:text="${personagem.poder}">habilidade do personagem</p>
-                    </div>
-                    <p class="descricao" th:text="${personagem.descricao}">descricao do personagem.</p>
-                </li>
-            </ul>
-        </div>
-    </main>
-    <script src="src/main.js"></script>
+	<header>
+		<img src="../imgs/icon.png" alt="icone de shuriken" class="icone">
+		<div class="switch-container">
+			<label class="switch"> <input type="checkbox"> <span
+				class="slider"></span>
+			</label>
+		</div>
+	</header>
+	<main>
+		<div class="container">
+			<ul class="biju-cards">
+				<li class="card-container" th:each="personagem : ${personagens}">
+				<button th:onclick="'botaoExcluir(\'' + ${personagem.id} + '\')'">
+						<img class="lixeira" alt="lixeira" src="../imgs/lixeira.png">
+					</button>
+					<div class="card">
+						<div class="title-card-container">
+							<div class="title-card">
+								<span class="nome" th:text="${personagem.nome}">nome do
+									personagem</span> <span id="id-personagem" class="numeracao"
+									th:text="'#' + ${personagem.id}">#000</span>
+									<input id="input-hidden" type="hidden" th:value="${personagem.id}">
+							</div>
+						</div>
+						<img th:src="${personagem.urlGif}" src="src/gifs/luffy.gif"
+							alt="kurama" class="gif">
+						<div
+							th:class="'habilidade-atual' + ' ' + ${personagem.corHabilidade}">
+							<p th:text="${personagem.poder}">habilidade do personagem</p>
+						</div>
+						<p class="descricao" th:text="${personagem.descricao}">descricao
+							do personagem.</p>
+					</div>
+				</li>
+				<li>
+					<button class="btn" onclick="redirectToPage()">+</button>
+				</li>
+			</ul>
+			<script>
+				function redirectToPage() {
+					window.location.href = 'formulario';
+				}
+
+				function botaoExcluir(id) {
+					window.location.href = "/ExcluirCardController?id=" + id;
+				}
+			</script>
+		</div>
+	</main>
+	<script src="../main.js"></script>
 </body>
 </html>

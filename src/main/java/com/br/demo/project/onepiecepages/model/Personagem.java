@@ -25,14 +25,15 @@ public class Personagem {
 	private String urlGif;
 	private String poder;
 	private String corHabilidade;
+	@Column(length = 1000)
 	private String descricao;
 	
-	public Personagem(String nome, String urlGif, String poder, String descricao) {
-		super();
+	public Personagem(String nome, String urlGif, String poder, String descricao, String corHabilidade) {
 		this.nome = nome;
 		this.urlGif = urlGif;
 		this.poder = poder;
 		this.descricao = descricao;
+		this.corHabilidade = corHabilidade;
 	}
 	
 }

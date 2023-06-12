@@ -6,35 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="src/css/style.css">
-    <link rel="stylesheet" href="src/css/scrollbar.css">
-    <link rel="stylesheet" href="src/css/reset.css">
-    <title>Adicionar Cards</title>
+    <link rel="shortcut icon" href="src/imgs/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/scrollbar.css">
+    <link rel="stylesheet" href=".../css/reset.css">
+    <title>One Piece - Formulário</title>
 </head>
-<body>
+<body class="fundo-claro" id="body">
+    <header>
+        <img src="../imgs/icon.png" alt="icone de shuriken" class="icone">
+        <div class="switch-container">
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </header>
     <main>
         <div class="container">
-            <div class="wraper">
-                <h3>Adicionar Personagem</h3>
-                <div class="box-container">
-                    <div class="box-wraper">
-                        <div class="input-class">
-                            <input placeholder="Nome" type="text" id="nome">
-                        </div>
-                        <div class="input-class">
-                            <input placeholder="Link da imagem" type="text" id="imagem-link">
-                        </div>
-                        <div class="input-class">
-                            <input placeholder="Habilidade" type="text" id="habilidade">
-                        </div>
-                        <div class="input-class">
-                            <input placeholder="Descrição" type="text" id="descricao">
-                        </div>
-                        <input type="button" value="Salvar" class="botao-salvar">
-                    </div>
+            <form class="formulario formulario-claro" action="/adicionaPersonagem" method="GET">
+                <div class="campo">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required class="input-claro">
                 </div>
-            </div>
+                <div class="campo">
+                    <label for="imagem">Link da Imagem:</label>
+                    <input type="text" id="imagem" name="imagem" required class="input-claro">
+                </div>
+                <div class="campo">
+                    <label for="habilidade">Habilidade:</label>
+                    <input type="text" id="habilidade" name="habilidade" required class="input-claro">
+                </div>
+                <div class="campo">
+                    <label for="descricao">Descrição:</label>
+                    <textarea id="descricao" name="descricao" required class="input-claro"></textarea>
+                </div>
+                <div class="campo">
+                    <label for="cor">Cor da Habilidade:</label>
+                    <select id="cor" name="cor" class="input-claro">
+                        <option value="">Selecionar</option>
+                        <option value="verde">Verde</option>
+                        <option value="amarelo">Amarela</option>
+                        <option value="cinza">Cinza</option>
+                    </select>
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
         </div>
     </main>
+    <script src="../main.js"></script>
+    <script>
+        function redirectToAdicionaPersonagem(event) {
+            event.preventDefault(); // Impede o envio do formulário padrão
+
+            // Obter os valores dos campos do formulário
+            var nome = document.getElementById('nome').value;
+            var imagem = document.getElementById('imagem').value;
+            var habilidade = document.getElementById('habilidade').value;
+            var descricao = document.getElementById('descricao').value;
+            var cor = document.getElementById('cor').value;
+
+            // Redirecionar para a página '/adicionaPersonagem' com os parâmetros do formulário
+            window.location.href = '/adicionaPersonagem?nome=' + encodeURIComponent(nome) + '&imagem=' + encodeURIComponent(imagem) + '&habilidade=' + encodeURIComponent(habilidade) + '&descricao=' + encodeURIComponent(descricao) + '&cor=' + encodeURIComponent(cor);
+        }
+    </script>
 </body>
 </html>
